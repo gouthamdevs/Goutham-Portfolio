@@ -2654,20 +2654,28 @@ canvas {
   .destination-label.align-right {
     left: 50%;
     right: auto;
-    top: calc(100% + 8px);
+    top: calc(100% + 6px);
     bottom: auto;
     transform: translateX(-50%);
     align-items: center;
     text-align: center;
-    padding: 5px 9px;
-    gap: 3px;
-    max-width: 126px;
+    padding: 4px 7px;
+    gap: 2px;
+    max-width: 96px;
     white-space: normal;
   }
 
-  .destination-node-2 .destination-label {
+  /* Upper crest nodes (About, Experience) place label ABOVE; lower trough nodes (Projects, Contact) place label BELOW */
+  .destination-node-1 .destination-label,
+  .destination-node-3 .destination-label {
     top: auto;
-    bottom: calc(100% + 8px);
+    bottom: calc(100% + 6px);
+  }
+
+  .destination-node-2 .destination-label,
+  .destination-node-4 .destination-label {
+    top: calc(100% + 6px);
+    bottom: auto;
   }
 
   .destination-label.align-left .label-badge-row,
@@ -5002,26 +5010,45 @@ canvas {
 /* Responsive adjustments */
 @media (max-width: 960px) {
   .project-display-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .project-gallery-pane {
     height: auto;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .gallery-stage {
-    min-height: 260px;
+    min-height: 220px;
   }
 
   .project-intel-pane {
     height: auto;
+    min-width: 0;
+    max-width: 100%;
     overflow: visible;
   }
 
   .intel-scroll-body {
     overflow: visible;
     padding-right: 0;
+  }
+
+  .intel-section,
+  .project-intel-header,
+  .infrastructure-section {
+    min-width: 0;
+    max-width: 100%;
+    padding: 13px 14px;
+  }
+
+  .tech-chip {
+    max-width: 100%;
+    white-space: normal;
+    word-break: break-word;
   }
 }
 
@@ -5817,6 +5844,11 @@ canvas {
     width: calc(100% - 20px);
   }
 
+  .experience-scroll-frame {
+    overflow-x: hidden;
+    padding-right: 4px;
+  }
+
   .experience-header {
     padding: 12px 14px;
   }
@@ -5832,6 +5864,7 @@ canvas {
   .experience-card {
     padding: 14px 14px;
     gap: 12px;
+    min-width: 0;
   }
 
   .card-top-row {
@@ -5850,6 +5883,7 @@ canvas {
 
   .pillar-card {
     padding: 12px 13px;
+    min-width: 0;
   }
 
   .pillar-title {
@@ -5861,9 +5895,19 @@ canvas {
     line-height: 1.52;
   }
 
+  .shipped-clients-grid,
+  .casual-games-cards-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .shipped-project-chip {
     flex-wrap: wrap;
     gap: 4px;
+  }
+
+  .chip-project-tag {
+    white-space: normal;
+    text-align: left;
   }
 }
 

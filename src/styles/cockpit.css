@@ -406,3 +406,58 @@
   pointer-events: none;
   transition: opacity 0.08s linear;
 }
+
+/* ==========================================================
+   Mobile & Portrait Responsive Cockpit Overrides
+   ========================================================== */
+@media (max-width: 768px), (max-aspect-ratio: 1/1) {
+  /* Reposition Central CRT Monitor inside visible center viewport */
+  .cockpit-central-monitor {
+    left: 50%;
+    top: 66%;
+    width: min(230px, 24%);
+    min-width: 210px;
+    height: auto;
+    min-height: 58px;
+    padding: 8px 12px;
+    border-radius: 6px;
+  }
+
+  .monitor-status-pill {
+    font-size: 8px;
+  }
+
+  .monitor-main-text {
+    font-size: 10px;
+    white-space: normal;
+  }
+
+  .monitor-sub-text {
+    font-size: 8px;
+    white-space: normal;
+    margin-top: 2px;
+  }
+
+  /* Move Launch Switch into visible bottom-center viewport so it is never clipped off-screen */
+  .cockpit-right-switch-zone {
+    left: 50%;
+    top: 83%;
+  }
+
+  .cockpit-physical-switch {
+    width: 56px;
+    height: 56px;
+    background: radial-gradient(circle at 35% 35%, #f87171 0%, #dc2626 60%, #7f1d1d 100%);
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 22px rgba(239, 68, 68, 0.75), inset 0 2px 6px rgba(255, 255, 255, 0.4);
+  }
+
+  .switch-prompt-tag {
+    bottom: calc(100% + 10px);
+  }
+
+  .switch-prompt-text {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+}
