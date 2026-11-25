@@ -461,3 +461,39 @@
     padding: 5px 10px;
   }
 }
+
+/* Mobile Landscape (short viewport height, e.g. 844x390) */
+@media (max-height: 520px) and (orientation: landscape) {
+  .cockpit-central-monitor {
+    width: 18%;
+    min-width: 165px;
+    height: auto;
+    min-height: 44px;
+    padding: 4px 8px;
+  }
+
+  .monitor-status-pill {
+    font-size: 7px;
+  }
+
+  .monitor-main-text {
+    font-size: 8.5px;
+  }
+
+  .monitor-sub-text {
+    font-size: 7px;
+  }
+
+  .cockpit-physical-switch {
+    width: 44px;
+    height: 44px;
+    background: radial-gradient(circle at 35% 35%, #f87171 0%, #dc2626 60%, #7f1d1d 100%);
+    border: 2px solid rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 18px rgba(239, 68, 68, 0.75);
+  }
+
+  .switch-prompt-text {
+    font-size: 8.5px;
+    padding: 3px 7px;
+  }
+}

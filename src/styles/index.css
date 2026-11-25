@@ -6227,3 +6227,257 @@ canvas {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   MOBILE LANDSCAPE VIEWPORT OVERRIDES (SHORT HEIGHT: e.g., 667x375, 844x390)
+   ========================================================================== */
+@media (max-height: 540px) and (orientation: landscape) {
+  /* 1. Constellation Map & Top Navigation */
+  .destination-back {
+    top: 10px;
+    left: 14px;
+    padding: 5px 11px;
+    font-size: 8.5px;
+  }
+
+  .destination-heading {
+    top: 10px;
+    padding: 5px 14px;
+    font-size: 9.5px;
+    letter-spacing: 0.16em;
+  }
+
+  .destination-node {
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+  }
+
+  .launch-base-node {
+    width: 44px;
+    height: 44px;
+    margin: -22px 0 0 -22px;
+  }
+
+  .rocket-vehicle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .destination-label,
+  .destination-label.align-left,
+  .destination-label.align-right {
+    left: 50%;
+    right: auto;
+    top: calc(100% + 6px);
+    bottom: auto;
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+    padding: 4px 10px;
+    gap: 2px;
+    white-space: nowrap;
+  }
+
+  /* Upper crest nodes (About, Experience) place label ABOVE; lower trough nodes (Projects, Contact) place label BELOW */
+  .destination-node-1 .destination-label,
+  .destination-node-3 .destination-label {
+    top: auto;
+    bottom: calc(100% + 6px);
+  }
+
+  .destination-node-2 .destination-label,
+  .destination-node-4 .destination-label {
+    top: calc(100% + 6px);
+    bottom: auto;
+  }
+
+  .destination-label.align-left .label-badge-row,
+  .destination-label.align-right .label-badge-row,
+  .destination-label.align-left .label-title-row,
+  .destination-label.align-right .label-title-row {
+    justify-content: center;
+  }
+
+  .destination-node:hover .destination-label {
+    transform: translateX(-50%) scale(1.03);
+  }
+
+  .label-main-title {
+    font-size: 11.5px;
+  }
+
+  .label-sector-tag {
+    display: none;
+  }
+
+  /* 2. Scene Top Bar */
+  .scene-topbar {
+    padding: 10px 16px 0;
+  }
+
+  .scene-back-btn {
+    padding: 5px 12px;
+    font-size: 9px;
+  }
+
+  .scene-nav-arrows {
+    padding: 3px 10px;
+  }
+
+  /* 3. About Showcase (fit comfortably inside short landscape height) */
+  .about-top-showcase {
+    top: 44px;
+    bottom: 8px;
+    overflow-y: auto;
+    justify-content: flex-start;
+    padding: 4px 12px 12px;
+    pointer-events: auto;
+  }
+
+  .about-avatar-container .space-hero-avatar-wrapper {
+    width: 72px;
+    height: 72px;
+  }
+
+  .about-title-pixel {
+    font-size: 15px;
+    margin: 6px 0 2px;
+  }
+
+  .about-typewriter-text {
+    font-size: 11px;
+  }
+
+  .about-subtitle-pixel {
+    font-size: 9px;
+    margin-top: 2px;
+  }
+
+  .about-body-panel {
+    margin-top: 10px;
+    padding: 10px 16px;
+  }
+
+  .about-body-text {
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  /* 4. Projects Showcase (restore 2-column side-by-side layout on wide landscape screens) */
+  .projects-showcase-container {
+    top: 46px;
+    bottom: 8px;
+    gap: 6px;
+  }
+
+  .projects-dock-shell {
+    padding: 3px 5px;
+  }
+
+  .project-nav-tab {
+    padding: 4px 10px;
+    font-size: 11px;
+    gap: 6px;
+  }
+
+  .tab-pill-tag {
+    display: none;
+  }
+
+  .project-display-grid {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 12px;
+    overflow: hidden;
+  }
+
+  .project-gallery-pane {
+    height: 100%;
+    min-height: 0;
+  }
+
+  .gallery-stage {
+    min-height: 0;
+  }
+
+  .gallery-caption-strip {
+    padding: 4px 10px;
+  }
+
+  .gallery-caption-strip .caption-title {
+    font-size: 11.5px;
+  }
+
+  .gallery-caption-strip .caption-desc {
+    display: none;
+  }
+
+  .gallery-thumbs-track {
+    padding: 4px 8px;
+  }
+
+  .gallery-thumb-btn {
+    flex: 0 0 48px;
+    height: 30px;
+  }
+
+  .project-intel-pane {
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .intel-scroll-body {
+    overflow-y: auto;
+    padding-right: 6px;
+    padding-bottom: 16px;
+    gap: 12px;
+  }
+
+  /* 5. Experience & Education Showcase */
+  .experience-showcase-container {
+    top: 46px;
+    bottom: 8px;
+  }
+
+  .experience-header {
+    padding: 10px 14px;
+    gap: 4px;
+  }
+
+  .experience-main-title {
+    font-size: 20px;
+  }
+
+  .experience-main-intro {
+    font-size: 12.5px;
+  }
+
+  /* 6. Contact Showcase */
+  .contact-showcase-container {
+    padding: 46px 16px 10px;
+    align-items: flex-start;
+  }
+
+  .contact-card-shell {
+    padding: 14px 18px;
+    gap: 10px;
+  }
+
+  .contact-main-title {
+    font-size: 22px;
+  }
+
+  .contact-main-intro {
+    font-size: 13px;
+  }
+
+  .contact-channels-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .contact-channel-card {
+    padding: 10px 12px;
+  }
+}
