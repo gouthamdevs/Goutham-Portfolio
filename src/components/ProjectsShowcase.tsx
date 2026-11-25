@@ -168,6 +168,7 @@ export default function ProjectsShowcase() {
                         muted
                         loop
                         playsInline
+                        preload="metadata"
                         onLoadedData={(e) => {
                           const v = e.currentTarget;
                           v.defaultMuted = true;
@@ -289,7 +290,7 @@ export default function ProjectsShowcase() {
                           </div>
                         </div>
                       ) : (
-                        <img src={s.src} alt={s.title} className="thumb-img" />
+                        <img src={s.src} alt={s.title} className="thumb-img" loading="lazy" decoding="async" />
                       )}
                       <span className="thumb-number">0{sIdx + 1}</span>
                     </button>

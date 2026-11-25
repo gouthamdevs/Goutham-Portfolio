@@ -265,13 +265,17 @@ export default function WorldExplorer({ onReturn }: { onReturn: () => void }) {
   );
 
   useEffect(() => {
-    // Preload terrain assets in background so transitions are instant with zero decode lag
-    destinations.forEach((d) => {
-      const img = new Image();
-      img.src = d.terrain;
-    });
+    // Defer terrain preloading until after initial constellation map render
+    const preloadTerrains = () => {
+      destinations.forEach((d) => {
+        const img = new Image();
+        img.src = d.terrain;
+      });
+    };
+    const timer = window.setTimeout(preloadTerrains, 1200);
 
     return () => {
+      window.clearTimeout(timer);
       if (animFrameRef.current !== null) {
         cancelAnimationFrame(animFrameRef.current);
       }

@@ -182,6 +182,7 @@ export default function CockpitLaunch({ onLaunchComplete }: CockpitLaunchProps) 
   const [monitorSub, setMonitorSub] = useState("WARP DRIVE: STANDBY");
   const [flashOpacity, setFlashOpacity] = useState(0);
   const [cockpitOpacity, setCockpitOpacity] = useState(1);
+  const [isCockpitLoaded, setIsCockpitLoaded] = useState(false);
   const [shakeIntensity, setShakeIntensity] = useState<"none" | "gentle" | "intense">("none");
 
   // Indicator LEDs state for sequenced illumination
@@ -208,7 +209,14 @@ export default function CockpitLaunch({ onLaunchComplete }: CockpitLaunchProps) 
     isReducedMotionRef.current =
       window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     audioRef.current = new CockpitAudio();
+
+    if (imgRef.current && imgRef.current.complete) {
+      setIsCockpitLoaded(true);
+    }
+    const fallbackTimer = window.setTimeout(() => setIsCockpitLoaded(true), 1500);
+
     return () => {
+      window.clearTimeout(fallbackTimer);
       if (audioRef.current) audioRef.current.destroy();
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
@@ -686,11 +694,33 @@ export default function CockpitLaunch({ onLaunchComplete }: CockpitLaunchProps) 
         </div>
       )}
 
+      {/* Minimal Boot Indicator while cockpit.png decodes on first visit */}
+      {!isCockpitLoaded && (
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            zIndex: 20,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            pointerEvents: "none",
+            fontFamily: "var(--font-mono, monospace)",
+            fontSize: "11px",
+            letterSpacing: "0.22em",
+            color: "rgba(147, 197, 253, 0.85)",
+            textShadow: "0 0 12px rgba(56, 189, 248, 0.5)",
+          }}
+        >
+          INITIALIZING COCKPIT SYSTEMS...
+        </div>
+      )}
+
       {/* 3. Cockpit Foreground Overlay Frame */}
       <div
         className={`cockpit-frame-wrapper ${shakeClass}`}
         style={{
-          opacity: cockpitOpacity,
+          opacity: isCockpitLoaded ? cockpitOpacity : 0,
           transition: "opacity 0.25s linear",
           visibility: cockpitOpacity <= 0 ? "hidden" : "visible",
         }}
@@ -702,6 +732,10 @@ export default function CockpitLaunch({ onLaunchComplete }: CockpitLaunchProps) 
             src="/assets/cockpit/cockpit.png"
             alt="Spaceship Cockpit"
             className="cockpit-image-overlay"
+            loading="eager"
+            decoding="sync"
+            fetchPriority="high"
+            onLoad={() => setIsCockpitLoaded(true)}
             draggable={false}
           />
 
