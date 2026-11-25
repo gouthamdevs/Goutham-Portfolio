@@ -2246,11 +2246,18 @@ canvas {
 
 @media (max-width: 600px) {
   .about-top-showcase {
-    top: 60px;
+    top: 56px;
   }
 
   .about-title-pixel {
     font-size: 13px;
+  }
+
+  .about-typewriter-text {
+    white-space: normal;
+    text-align: center;
+    font-size: 10.5px;
+    line-height: 1.5;
   }
 
   .about-body-panel {
@@ -2259,7 +2266,7 @@ canvas {
   }
 
   .about-body-text {
-    font-size: 11px;
+    font-size: 11.5px;
     line-height: 1.55;
   }
 }
@@ -2584,71 +2591,109 @@ canvas {
 }
 
 @media (max-width: 700px) {
+  .destination-back {
+    top: 14px;
+    left: 14px;
+    padding: 6px 12px;
+    font-size: 8.5px;
+  }
+
   .destination-heading {
-    top: 64px;
-    font-size: 9.5px;
-    padding: 6px 14px;
-    letter-spacing: 0.16em;
+    top: 56px;
+    font-size: 9px;
+    padding: 6px 12px;
+    letter-spacing: 0.14em;
+    max-width: calc(100vw - 28px);
+  }
+
+  .scene-topbar {
+    padding: 12px 12px 0;
+  }
+
+  .scene-back-btn {
+    padding: 6px 12px;
+    font-size: 9px;
+    gap: 6px;
+  }
+
+  .scene-nav-arrows {
+    padding: 3px 8px;
+    gap: 4px;
+  }
+
+  .scene-arrow-btn {
+    padding: 4px;
+    font-size: 8.5px;
+    gap: 4px;
+  }
+
+  .scene-step-counter {
+    font-size: 9px;
+    padding: 0 2px;
   }
 
   .destination-node {
-    width: 60px;
-    height: 60px;
-    margin: -30px 0 0 -30px;
+    width: 56px;
+    height: 56px;
+    margin: -28px 0 0 -28px;
   }
 
   .launch-base-node {
-    width: 52px;
-    height: 52px;
-    margin: -26px 0 0 -26px;
+    width: 48px;
+    height: 48px;
+    margin: -24px 0 0 -24px;
   }
 
   .rocket-vehicle {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
   }
 
-  .destination-label {
-    padding: 6px 10px;
+  .destination-label,
+  .destination-label.align-left,
+  .destination-label.align-right {
+    left: 50%;
+    right: auto;
+    top: calc(100% + 8px);
+    bottom: auto;
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+    padding: 5px 9px;
     gap: 3px;
-    max-width: 145px;
+    max-width: 126px;
     white-space: normal;
   }
 
-  .destination-label.align-right {
-    left: calc(100% + 10px);
-    right: auto;
+  .destination-node-2 .destination-label {
+    top: auto;
+    bottom: calc(100% + 8px);
   }
 
-  .destination-label.align-left {
-    right: calc(100% + 10px);
-    left: auto;
+  .destination-label.align-left .label-badge-row,
+  .destination-label.align-right .label-badge-row,
+  .destination-label.align-left .label-title-row,
+  .destination-label.align-right .label-title-row {
+    justify-content: center;
+  }
+
+  .destination-node:hover .destination-label {
+    transform: translateX(-50%) scale(1.03);
   }
 
   .label-main-title {
-    font-size: 11.5px;
+    font-size: 11px;
     line-height: 1.2;
   }
 
   .label-badge-row {
-    font-size: 8px;
-    letter-spacing: 0.1em;
+    font-size: 7.5px;
+    letter-spacing: 0.08em;
   }
 
   .label-sector-index {
     font-size: 7.5px;
     padding: 1px 4px;
-  }
-}
-
-@media (max-width: 420px) {
-  .destination-label {
-    padding: 5px 8px;
-    max-width: 120px;
-  }
-
-  .label-main-title {
-    font-size: 10px;
   }
 
   .label-sector-tag {
@@ -3057,24 +3102,30 @@ canvas {
 .project-nav-tab.theme-crimson:hover {
   border-color: rgba(244, 63, 94, 0.4);
 }
+
 .project-nav-tab.theme-crimson.is-active {
   border-color: #f43f5e;
   box-shadow: 0 0 20px rgba(244, 63, 94, 0.35), inset 0 0 10px rgba(244, 63, 94, 0.14);
 }
+
 .project-nav-tab.theme-crimson.is-active .tab-active-spotlight {
   background: linear-gradient(135deg, rgba(244, 63, 94, 0.28) 0%, rgba(190, 18, 60, 0.16) 100%);
 }
+
 .project-nav-tab.theme-crimson.is-active .tab-pill-num {
   color: #fecdd3;
 }
+
 .project-nav-tab.theme-crimson.is-active .tab-pill-title {
   color: #ffffff;
   text-shadow: 0 0 12px rgba(244, 63, 94, 0.5);
 }
+
 .project-nav-tab.theme-crimson.is-active .tab-status-led {
   background: #f43f5e;
   box-shadow: 0 0 8px #f43f5e;
 }
+
 .project-nav-tab.theme-crimson.is-active .tab-corner-accent {
   border-color: #f43f5e;
 }
@@ -3083,24 +3134,30 @@ canvas {
 .project-nav-tab.theme-teal:hover {
   border-color: rgba(20, 184, 166, 0.4);
 }
+
 .project-nav-tab.theme-teal.is-active {
   border-color: #14b8a6;
   box-shadow: 0 0 20px rgba(20, 184, 166, 0.35), inset 0 0 10px rgba(20, 184, 166, 0.14);
 }
+
 .project-nav-tab.theme-teal.is-active .tab-active-spotlight {
   background: linear-gradient(135deg, rgba(20, 184, 166, 0.28) 0%, rgba(15, 118, 110, 0.16) 100%);
 }
+
 .project-nav-tab.theme-teal.is-active .tab-pill-num {
   color: #99f6e4;
 }
+
 .project-nav-tab.theme-teal.is-active .tab-pill-title {
   color: #ffffff;
   text-shadow: 0 0 12px rgba(20, 184, 166, 0.5);
 }
+
 .project-nav-tab.theme-teal.is-active .tab-status-led {
   background: #14b8a6;
   box-shadow: 0 0 8px #14b8a6;
 }
+
 .project-nav-tab.theme-teal.is-active .tab-corner-accent {
   border-color: #14b8a6;
 }
@@ -3109,24 +3166,30 @@ canvas {
 .project-nav-tab.theme-magenta:hover {
   border-color: rgba(217, 70, 239, 0.4);
 }
+
 .project-nav-tab.theme-magenta.is-active {
   border-color: #d946ef;
   box-shadow: 0 0 20px rgba(217, 70, 239, 0.35), inset 0 0 10px rgba(217, 70, 239, 0.14);
 }
+
 .project-nav-tab.theme-magenta.is-active .tab-active-spotlight {
   background: linear-gradient(135deg, rgba(217, 70, 239, 0.28) 0%, rgba(162, 28, 175, 0.16) 100%);
 }
+
 .project-nav-tab.theme-magenta.is-active .tab-pill-num {
   color: #f5d0fe;
 }
+
 .project-nav-tab.theme-magenta.is-active .tab-pill-title {
   color: #ffffff;
   text-shadow: 0 0 12px rgba(217, 70, 239, 0.5);
 }
+
 .project-nav-tab.theme-magenta.is-active .tab-status-led {
   background: #d946ef;
   box-shadow: 0 0 8px #d946ef;
 }
+
 .project-nav-tab.theme-magenta.is-active .tab-corner-accent {
   border-color: #d946ef;
 }
@@ -4964,25 +5027,48 @@ canvas {
 
 @media (max-width: 600px) {
   .projects-showcase-container {
-    top: 56px;
+    top: 52px;
     left: 10px;
     right: 10px;
-    bottom: 12px;
+    bottom: 10px;
+    width: auto;
+    transform: none;
+    gap: 8px;
   }
 
   .projects-dock-shell {
-    padding: 3px 5px;
+    padding: 4px 5px;
     gap: 5px;
   }
 
   .project-nav-tab {
-    padding: 5px 9px;
+    padding: 5px 10px;
     font-size: 11px;
     gap: 6px;
   }
 
   .tab-pill-tag {
     display: none;
+  }
+
+  .gallery-stage {
+    min-height: 190px;
+    max-height: 36vh;
+  }
+
+  .gallery-thumb-btn {
+    flex: 0 0 54px;
+    height: 36px;
+  }
+
+  .project-intel-header {
+    padding: 12px 14px;
+  }
+
+  .steam-store-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 
   .stage-caption-bar {
@@ -5726,9 +5812,26 @@ canvas {
 
 @media (max-width: 768px) {
   .experience-showcase-container {
-    top: 56px;
+    top: 52px;
     bottom: 10px;
     width: calc(100% - 20px);
+  }
+
+  .experience-header {
+    padding: 12px 14px;
+  }
+
+  .experience-main-title {
+    font-size: 22px;
+  }
+
+  .experience-main-intro {
+    font-size: 13.5px;
+  }
+
+  .experience-card {
+    padding: 14px 14px;
+    gap: 12px;
   }
 
   .card-top-row {
@@ -5737,16 +5840,30 @@ canvas {
 
   .studd-logo-frame,
   .edu-icon-frame {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
   }
 
   .company-name {
-    font-size: 19px;
+    font-size: 18px;
   }
 
-  .contribution-bullet {
+  .pillar-card {
+    padding: 12px 13px;
+  }
+
+  .pillar-title {
+    font-size: 15px;
+  }
+
+  .pillar-bullets li {
     font-size: 13px;
+    line-height: 1.52;
+  }
+
+  .shipped-project-chip {
+    flex-wrap: wrap;
+    gap: 4px;
   }
 }
 
@@ -6012,4 +6129,57 @@ canvas {
   transform: translateY(-1px);
   box-shadow: 0 8px 28px rgba(96, 165, 250, 0.5);
   filter: brightness(1.08);
+}
+
+@media (max-width: 640px) {
+  .contact-showcase-container {
+    padding: 56px 12px 14px;
+    align-items: flex-start;
+  }
+
+  .contact-card-shell {
+    padding: 16px 16px;
+    gap: 14px;
+    border-radius: 14px;
+  }
+
+  .contact-main-title {
+    font-size: 24px;
+  }
+
+  .contact-main-intro {
+    font-size: 13.5px;
+  }
+
+  .contact-availability-bar {
+    padding: 9px 12px;
+    gap: 8px;
+  }
+
+  .availability-item {
+    font-size: 12px;
+  }
+
+  .contact-channel-card {
+    padding: 11px 12px;
+    gap: 10px;
+  }
+
+  .channel-icon-box {
+    width: 38px;
+    height: 38px;
+  }
+
+  .channel-value {
+    font-size: 13px;
+  }
+
+  .contact-footer-cta {
+    justify-content: stretch;
+  }
+
+  .contact-primary-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
