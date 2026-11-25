@@ -729,7 +729,7 @@ export default function CockpitLaunch({ onLaunchComplete }: CockpitLaunchProps) 
           {/* Main Cockpit Image (Transparent Windshield, GOUTHAM nameplate preserved) */}
           <img
             ref={imgRef}
-            src="/assets/cockpit/cockpit.png"
+            src="/assets/cockpit/cockpit.webp"
             alt="Spaceship Cockpit"
             className="cockpit-image-overlay"
             loading="eager"
