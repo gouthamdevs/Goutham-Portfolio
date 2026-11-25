@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, lazy, Suspense } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import CockpitLaunch from "./components/CockpitLaunch";
-import WorldExplorer from "./components/WorldExplorer";
+
+const WorldExplorer = lazy(() => import("./components/WorldExplorer"));
 
 function App() {
   const [exploring, setExploring] = useState(false);
@@ -29,7 +30,9 @@ function App() {
             exit={{ opacity: 0, scale: 0.98 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
-            <WorldExplorer onReturn={() => setExploring(false)} />
+            <Suspense fallback={null}>
+              <WorldExplorer onReturn={() => setExploring(false)} />
+            </Suspense>
           </motion.div>
         )}
       </AnimatePresence>

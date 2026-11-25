@@ -1359,13 +1359,11 @@ canvas {
 }
 
 .nebula-drift-deep {
-  animation: nebula-breathe 28s ease-in-out infinite alternate;
-  transform-origin: 50% 50%;
+  opacity: 0.92;
 }
 
 .nebula-drift-mid {
-  animation: nebula-sway 22s ease-in-out infinite alternate;
-  transform-origin: 50% 50%;
+  opacity: 0.88;
 }
 
 @keyframes nebula-breathe {
@@ -1881,6 +1879,39 @@ canvas {
 
 .destination-screen.is-scene-active {
   pointer-events: none;
+}
+
+.destination-screen.is-scene-active *,
+.destination-screen.is-scene-active *::before,
+.destination-screen.is-scene-active *::after {
+  animation-play-state: paused !important;
+}
+
+/* Mobile & Short-Screen GPU Performance Boost */
+@media (max-width: 768px), (max-height: 540px) {
+  .scene-terrain-img {
+    animation: none;
+  }
+
+  .destination-label,
+  .projects-dock-shell,
+  .gallery-card,
+  .project-intel-header,
+  .intel-section,
+  .infrastructure-section,
+  .about-body-panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(6, 12, 24, 0.88);
+  }
+
+  .experience-header,
+  .experience-card,
+  .contact-card-shell {
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    background: rgba(6, 12, 24, 0.86);
+  }
 }
 
 .destination-scene-view {

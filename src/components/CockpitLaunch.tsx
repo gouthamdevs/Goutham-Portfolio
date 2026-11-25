@@ -216,9 +216,13 @@ export default function CockpitLaunch({ onLaunchComplete }: CockpitLaunchProps) 
 
   // Initialize stars pool and distant celestial deep space objects
   useEffect(() => {
+    const isMobileViewport = typeof window !== "undefined" && window.innerWidth < 768;
+    const starCount = isMobileViewport ? 260 : 750;
+    const distantCount = isMobileViewport ? 120 : 350;
+
     const stars: Star[] = [];
     const colors = ["#ffffff", "#ffffff", "#f0f7ff", "#93c5fd", "#67e8f9", "#fef08a"];
-    for (let i = 0; i < 750; i++) {
+    for (let i = 0; i < starCount; i++) {
       stars.push({
         x: (Math.random() - 0.5) * 2200,
         y: (Math.random() - 0.5) * 1600,
@@ -233,7 +237,7 @@ export default function CockpitLaunch({ onLaunchComplete }: CockpitLaunchProps) 
     // Distant twinkling micro-stars
     const dStars: DistantStar[] = [];
     const dColors = ["#ffffff", "#ffffff", "#f0fdf4", "#e0f2fe", "#93c5fd", "#fed7aa", "#ddd6fe"];
-    for (let i = 0; i < 350; i++) {
+    for (let i = 0; i < distantCount; i++) {
       dStars.push({
         x: Math.random(),
         y: Math.random(),

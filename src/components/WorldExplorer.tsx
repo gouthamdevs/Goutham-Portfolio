@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, lazy, Suspense } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArrowLeft,
@@ -9,9 +9,10 @@ import {
 import OrbitMarker from "./OrbitMarkers";
 import PixelAvatar from "./PixelAvatar";
 import TypewriterText from "./TypewriterText";
-import ProjectsShowcase from "./ProjectsShowcase";
-import ExperienceShowcase from "./ExperienceShowcase";
-import ContactShowcase from "./ContactShowcase";
+
+const ProjectsShowcase = lazy(() => import("./ProjectsShowcase"));
+const ExperienceShowcase = lazy(() => import("./ExperienceShowcase"));
+const ContactShowcase = lazy(() => import("./ContactShowcase"));
 
 export type Destination = {
   id: string;
@@ -355,11 +356,11 @@ export default function WorldExplorer({ onReturn }: { onReturn: () => void }) {
             preserveAspectRatio="none"
           >
             <defs>
-              <filter id="nebulaSoftGaussian" x="-30%" y="-30%" width="160%" height="160%">
-                <feGaussianBlur stdDeviation="32" />
+              <filter id="nebulaSoftGaussian" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="16" />
               </filter>
-              <filter id="nebulaDeepGaussian" x="-40%" y="-40%" width="180%" height="180%">
-                <feGaussianBlur stdDeviation="55" />
+              <filter id="nebulaDeepGaussian" x="-25%" y="-25%" width="150%" height="150%">
+                <feGaussianBlur stdDeviation="24" />
               </filter>
             </defs>
 
@@ -641,11 +642,17 @@ export default function WorldExplorer({ onReturn }: { onReturn: () => void }) {
                 </div>
               </motion.div>
             ) : displayScene.id === "projects" ? (
-              <ProjectsShowcase />
+              <Suspense fallback={null}>
+                <ProjectsShowcase />
+              </Suspense>
             ) : displayScene.id === "experience" ? (
-              <ExperienceShowcase />
+              <Suspense fallback={null}>
+                <ExperienceShowcase />
+              </Suspense>
             ) : displayScene.id === "contact" ? (
-              <ContactShowcase />
+              <Suspense fallback={null}>
+                <ContactShowcase />
+              </Suspense>
             ) : (
               <div className="scene-content-anchor">
                 <motion.article
