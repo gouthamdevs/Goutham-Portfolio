@@ -352,79 +352,8 @@ export default function WorldExplorer({ onReturn }: { onReturn: () => void }) {
       >
         <div className="destination-starfield" aria-hidden="true" />
 
-        {/* Ethereal organic nebula dust clouds faithfully reflecting reference image */}
-        <div className="constellation-nebulae" aria-hidden="true">
-          <svg
-            className="nebula-vector-canvas"
-            viewBox="0 0 1000 1000"
-            preserveAspectRatio="none"
-          >
-            <defs>
-              <filter id="nebulaSoftGaussian" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="16" />
-              </filter>
-              <filter id="nebulaDeepGaussian" x="-25%" y="-25%" width="150%" height="150%">
-                <feGaussianBlur stdDeviation="24" />
-              </filter>
-            </defs>
-
-            {/* Layer 1: Ambient deep cosmic cloud spine hugging the constellation path */}
-            <path
-              d="M 60 880 C 40 700, 120 480, 240 450 C 340 420, 390 580, 480 540 C 560 500, 520 280, 640 250 C 740 220, 780 130, 890 120 C 980 110, 990 280, 920 380 C 850 480, 750 620, 660 630 C 570 640, 540 780, 450 810 C 350 840, 240 940, 140 950 C 80 960, 70 930, 60 880 Z"
-              fill="rgba(15, 18, 28, 0.78)"
-              filter="url(#nebulaDeepGaussian)"
-              className="nebula-drift-deep"
-            />
-
-            {/* Layer 2: Organic topographic cloud lobes echoing reference contours */}
-            {/* Lower-left lobe around Launch Pad & Commercial Projects */}
-            <path
-              d="M 90 840 C 70 730, 130 590, 210 520 C 290 450, 350 510, 340 640 C 330 760, 280 890, 190 920 C 130 940, 100 890, 90 840 Z"
-              fill="rgba(24, 29, 44, 0.62)"
-              filter="url(#nebulaSoftGaussian)"
-              className="nebula-drift-mid"
-            />
-
-            {/* Center-lower trough lobe under Personal Projects */}
-            <path
-              d="M 280 720 C 310 610, 380 570, 470 590 C 550 610, 570 730, 530 810 C 490 880, 380 890, 320 850 C 270 810, 260 770, 280 720 Z"
-              fill="rgba(22, 27, 40, 0.65)"
-              filter="url(#nebulaSoftGaussian)"
-            />
-
-            {/* Upper-crest & Center body embracing Experience and About */}
-            <path
-              d="M 460 480 C 470 370, 550 260, 650 280 C 740 300, 770 410, 780 510 C 790 610, 740 700, 650 680 C 570 660, 490 670, 460 590 C 430 530, 450 500, 460 480 Z"
-              fill="rgba(28, 34, 52, 0.6)"
-              filter="url(#nebulaSoftGaussian)"
-              className="nebula-drift-mid"
-            />
-
-            {/* Upper-right apex cloud embracing Contact */}
-            <path
-              d="M 670 360 C 680 230, 770 140, 860 130 C 940 120, 980 200, 960 310 C 930 400, 850 470, 770 450 C 700 430, 660 410, 670 360 Z"
-              fill="rgba(26, 32, 48, 0.62)"
-              filter="url(#nebulaSoftGaussian)"
-            />
-
-            {/* Layer 3: Nested highlight contour clouds for rich depth */}
-            <path
-              d="M 180 620 C 220 540, 300 550, 320 620 C 330 680, 290 740, 230 730 C 180 720, 160 670, 180 620 Z"
-              fill="rgba(38, 46, 68, 0.42)"
-              filter="url(#nebulaSoftGaussian)"
-            />
-            <path
-              d="M 480 430 C 520 330, 600 340, 630 410 C 650 470, 610 530, 550 530 C 490 530, 460 480, 480 430 Z"
-              fill="rgba(42, 50, 74, 0.4)"
-              filter="url(#nebulaSoftGaussian)"
-            />
-            <path
-              d="M 720 280 C 760 190, 840 200, 870 260 C 890 320, 850 370, 800 370 C 740 370, 700 330, 720 280 Z"
-              fill="rgba(40, 48, 72, 0.44)"
-              filter="url(#nebulaSoftGaussian)"
-            />
-          </svg>
-        </div>
+        {/* Pure GPU radial-gradient nebula dust clouds (zero SVG blur filter overhead) */}
+        <div className="constellation-nebulae" aria-hidden="true" />
 
         <button className="destination-back" onClick={onReturn} aria-label="Return to Earth">
           <ArrowLeft size={14} /> <span>BACK</span>
@@ -516,9 +445,6 @@ export default function WorldExplorer({ onReturn }: { onReturn: () => void }) {
             style={basePosition}
             onClick={() => flyToNode(-1)}
             aria-label="Launch Pad"
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.1, duration: 0.5, type: "spring" }}
             whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.94 }}
           >
@@ -535,13 +461,6 @@ export default function WorldExplorer({ onReturn }: { onReturn: () => void }) {
               style={{ left: positions[index].left, top: positions[index].top }}
               onClick={() => flyToNode(index)}
               aria-label={`Explore ${destination.title}`}
-              initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                delay: 0.15 + index * 0.08,
-                duration: 0.5,
-                type: "spring",
-              }}
               whileHover={{ scale: 1.12 }}
               whileTap={{ scale: 0.94 }}
             >

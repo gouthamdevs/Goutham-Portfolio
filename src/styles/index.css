@@ -1332,22 +1332,18 @@ canvas {
   }
 }
 
-/* Ethereal Nebula Glow Clouds */
+/* Ethereal Nebula Glow Clouds (Pure CSS radial-gradients for instant GPU rendering) */
 .constellation-nebulae {
   position: absolute;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
-}
-
-/* Ethereal Organic Contour Nebulae (Faithfully reflecting reference image) */
-.constellation-nebulae {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
+  background:
+    radial-gradient(ellipse 36% 32% at 22% 72%, rgba(28, 38, 62, 0.55) 0%, transparent 70%),
+    radial-gradient(ellipse 34% 30% at 45% 68%, rgba(24, 34, 56, 0.5) 0%, transparent 72%),
+    radial-gradient(ellipse 38% 34% at 62% 42%, rgba(30, 40, 68, 0.52) 0%, transparent 72%),
+    radial-gradient(ellipse 32% 28% at 82% 26%, rgba(28, 38, 64, 0.48) 0%, transparent 70%);
 }
 
 .nebula-vector-canvas {
@@ -1408,11 +1404,10 @@ canvas {
 /* Ambient celestial glow ribbon */
 .constellation-glow {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.22);
-  stroke-width: 7;
+  stroke: rgba(160, 225, 255, 0.14);
+  stroke-width: 10;
   stroke-linecap: round;
   stroke-linejoin: round;
-  filter: blur(4px);
 }
 
 /* Ethereal secondary harmonic resonance line */
@@ -1458,7 +1453,6 @@ canvas {
   stroke-linecap: round;
   stroke-dasharray: 12 50;
   animation: constellation-flow 12s linear infinite;
-  filter: drop-shadow(0 0 7px #9de8ff);
 }
 
 @keyframes constellation-flow {
